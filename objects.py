@@ -42,3 +42,4 @@ class LiteControlButton:
 
     def get_lite_value(self):
         return self.G, self.G, self.G
+

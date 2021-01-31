@@ -12,6 +12,7 @@ def main():
     font = pygame.font.Font(FONT, FONT_SIZE)
     clock = pygame.time.Clock()
     done = False
+
     while not done:
         for event in pygame.event.get():
             lite_control.handle_event(event)
