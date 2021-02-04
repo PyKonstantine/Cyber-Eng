@@ -4,6 +4,11 @@ pygame.init()
 font = pygame.font.Font(FONT, FONT_SIZE)
 
 
+def display_text(text, surface, pos=(), color=BLACK, background=None):
+    text_img = font.render(text, True, color, background)
+    surface.blit(text_img, pos)
+
+
 class LiteControlButton:
     """
     Есть проблема с перемещением объекта по оси У. проблема связана с выходом из цветового диапазона - нужно
@@ -40,7 +45,8 @@ class LiteControlButton:
     def draw(self, screen):
         self.aria.fill((self.get_lite_value()))
         pygame.draw.rect(screen, self.color, self.rect, 5)
-        pygame.draw.circle(self.aria, (self.R, self.G, self.B), (self.rect.w // 2, self.button_y), (self.rect.w // 2), 20)
+        pygame.draw.circle(self.aria, (self.R, self.G, self.B),
+                           (self.rect.w // 2, self.button_y), (self.rect.w // 2), 20)
         screen.blit(self.aria, (self.x, self.y))
 
     def get_lite_value(self):
@@ -65,7 +71,7 @@ class InputBox:
             self.color = SKY_BLUE if self.active else DARK_GRAY
         if event.type == pygame.KEYDOWN:
             if self.active:
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN:  # Вывод текст при нажатии Ентер.
                     print(self.text)
                     self.text = ''
                 elif event.key == pygame.K_BACKSPACE:
@@ -75,6 +81,27 @@ class InputBox:
                 self.txt_surface = font.render(self.text, True, self.color)
 
     def draw(self, screen):
-        screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))
+        screen.blit(self.txt_surface, (self.rect.x + 5, self.rect.y + 5))
         pygame.draw.line(screen, self.color, (self.rect.x, self.rect.y + self.rect.h),
                          (self.rect.w, self.rect.y + self.rect.h), 2)
+
+
+class TextDisplay:
+
+    def __init__(self, text_file, surface, x, y):
+        self.text_file = text_file
+        self.surface = surface
+        self.x = x
+        self.y = y
+        self.date = list()
+
+    def displayed(self):
+        pass
+
+    def over_turned(self):
+        pass
+
+    def get_load_file(self):
+        with open(self.text_file, 'r') as inf:
+            date = inf.read().splitlines()
+            self.date = date
