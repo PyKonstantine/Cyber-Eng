@@ -1,12 +1,12 @@
+# coding: utf-8
 import pygame
-
 
 # main
 WIDTH = 1000
 HEIGHT = 600
-FPS = 40
-FONT = None
-FONT_SIZE = 24
+FPS = 60
+FONT = 'leelawadeeполужирный'
+FONT_SIZE = 20
 ENG_TEXT = 'text.txt'
 TRANS_TEXT = 'translation text.txt'
 

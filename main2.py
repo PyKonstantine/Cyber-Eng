@@ -1,6 +1,6 @@
 # coding: utf-8
 from settings import *
-from objects import LiteControlButton, InputBox, TextDisplay, display_text
+from objects import LiteControlButton, InputBox, TextDisplay, display_text, font_control
 
 
 def main():
@@ -16,24 +16,26 @@ def main():
     eng_text = TextDisplay(15, 250, WIDTH - 20, 3)
     eng_text.get_load_file(ENG_TEXT)
 
+    translate_text = TextDisplay(15, 150, WIDTH - 20, 1)
+    translate_text.get_load_file(TRANS_TEXT)
+
     while not done:
         for event in pygame.event.get():
             lite_control.handle_event(event)
             input_text.handle_event(event)
+            eng_text.handle_event(event)
+            font_control.handle_event(event)
             if event.type == pygame.QUIT:
                 done = True
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:     #
-                    eng_text.over_turned_up(True)    # временная штука проверяет работу перемотки
-                if event.key == pygame.K_DOWN:   #
-                    eng_text.over_turned_down()  #
 
         sc.fill((lite_control.get_lite_value()))
         lite_control.draw(sc)
         input_text.draw(sc)
+        font_control.draw(sc)
         switch = input_text.check_text(eng_text.get_text())
         display_text('fps: ' + str(int(clock.get_fps())), sc, (WIDTH - 60, 10), TEXT_COLOR)
         eng_text.displayed(sc)
+        # translate_text.displayed(sc)
         eng_text.over_turned_up(switch)
         pygame.display.update()
         clock.tick(FPS)
