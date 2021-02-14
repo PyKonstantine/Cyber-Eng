@@ -22,10 +22,10 @@ def display_text(text, pos=(), surface=sc, color=BLACK, background=None):
 
 
 def interface():
-    pygame.draw.line(sc, SKY_BLUE, (10, 230), (WIDTH - 10, 230), 1)
+    pygame.draw.line(sc, TEXT_COLOR, (10, 230), (WIDTH - 10, 230), 1)
     fps = int(clock.get_fps())
-    display_text('fps: ' + str(fps), (WIDTH - 60, 10), sc, SKY_BLUE)
-    display_text('счетчик: ' + str(count), (20, 20), sc, SKY_BLUE)
+    display_text('fps: ' + str(fps), (WIDTH - 60, 10), sc, TEXT_COLOR)
+    display_text('счетчик: ' + str(count), (20, 20), sc, TEXT_COLOR)
 
 
 def text_writer(text):
@@ -41,7 +41,7 @@ def text_writer(text):
     global input_text
     if text != eng_text_hab[0][:process_point]:
         bg = RED
-    rect = display_text(text, pos, sc, SKY_BLUE, bg)
+    rect = display_text(text, pos, sc, TEXT_COLOR, bg)
     if rect > rect_equal and text == eng_text_hab[0] + ' ':
         eng_text_hab.pop(0)
         input_text = ''
@@ -63,9 +63,9 @@ def display_eng_text(hab):
         count += 1
     text_aria = pygame.Surface((WIDTH - 20, 80))
     text_aria.fill(BACKGROUND)
-    rect_equal = display_text(hab[0], (0, 0), text_aria, SKY_BLUE)
-    display_text(hab[1], (0, 20), text_aria, SKY_BLUE)
-    display_text(hab[2], (0, 40), text_aria, SKY_BLUE)
+    rect_equal = display_text(hab[0], (0, 0), text_aria, TEXT_COLOR)
+    display_text(hab[1], (0, 20), text_aria, TEXT_COLOR)
+    display_text(hab[2], (0, 40), text_aria, TEXT_COLOR)
     sc.blit(text_aria, (15, 250))
 
 
@@ -74,7 +74,7 @@ def trans_text_writer():
     b = trans_text[count - 3]
     c = str(b).split()
     text = ' '.join(c[:counter - 1])
-    rect = display_text(text, (15, 160), sc, SKY_BLUE)
+    rect = display_text(text, (15, 160), sc, TEXT_COLOR)
     if rect > rect_equal:
         text = text[1:]
 

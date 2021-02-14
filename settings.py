@@ -1,11 +1,12 @@
 import pygame
 
+
 # main
 WIDTH = 1000
 HEIGHT = 600
-FPS = 60
+FPS = 40
 FONT = None
-FONT_SIZE = 26
+FONT_SIZE = 24
 ENG_TEXT = 'text.txt'
 TRANS_TEXT = 'translation text.txt'
 
@@ -18,7 +19,7 @@ BLUE = (0, 0, 255)
 DARK_GRAY = (110, 110, 110)
 PURPLE = (120, 0, 120)
 BACKGROUND = (43, 43, 43)
-SKY_BLUE = pygame.Color('lightskyblue3')
+TEXT_COLOR = pygame.Color('lightskyblue3')
 
 
 # IMG
